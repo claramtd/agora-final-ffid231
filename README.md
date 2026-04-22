@@ -1,8 +1,8 @@
 # AGORA Final FFID 231
 
-AGORA-aligned 2D shot-domain processing workflow for `FFID 231` from the dataset **2D Vibroseis Seismic Data Line 001 - Poland**. This subproject packages the final workflow, configuration, documentation, and flowchart in a GitHub-friendly layout inspired by the style of the Madagascar reference project. The seismic dataset designation follows the SEG Wiki entry for *2D Vibroseis Line 001*.
+AGORA-aligned 2D shot-domain seismic processing workflow for `FFID 231` from the dataset **2D Vibroseis Seismic Data Line 001 - Poland**. This repository packages the full workflow, from SEG-Y preparation to stage-by-stage QC outputs, in a form suitable for academic documentation and demonstration. The dataset designation follows the SEG Wiki entry for *2D Vibroseis Line 001*.
 
-- Reference repository: https://github.com/arohatgi29/Seismic-Processing-using-Madagascar
+- Reference repository structure: https://github.com/arohatgi29/Seismic-Processing-using-Madagascar
 
 ## Table of contents
 
@@ -10,12 +10,15 @@ AGORA-aligned 2D shot-domain processing workflow for `FFID 231` from the dataset
 - Research objectives
 - Data and acquisition
 - Methodology
+- Preview
 - Data preparation
 - Repository layout
 - Processing flow
 - Stage-by-stage summary
 - Results summary
 - Method limitations
+- Citation
+- Acknowledgement
 - Inputs
 - Outputs
 - How to run
@@ -26,15 +29,15 @@ AGORA-aligned 2D shot-domain processing workflow for `FFID 231` from the dataset
 
 This workflow was prepared to:
 
-1. reproduce a clean and documented AGORA-style ground-roll attenuation workflow,
-2. provide a transparent processing sequence for academic reporting and reproducibility,
-3. export stage-by-stage visualizations for QC,
-4. generate publication-friendly output under a single subproject folder.
+1. document a clean and reproducible AGORA-aligned seismic ground-roll attenuation workflow,
+2. provide a transparent processing sequence for final-project reporting,
+3. export stage-by-stage visualizations for quality control and interpretation,
+4. package the full demonstration as a GitHub-ready subproject.
 
-The packaged workflow now starts from the raw SEG-Y file:
+The packaged workflow starts from the raw SEG-Y file:
 
-1. convert `Line_001.sgy` to `.npy`,
-2. export the time axis and trace headers needed for QC,
+1. convert `Line_001.sgy` to NumPy arrays,
+2. export the time axis and trace-header information needed for QC,
 3. extract the `FFID 231` gather,
 4. run the 8-stage AGORA-aligned workflow on that extracted gather.
 
@@ -51,16 +54,16 @@ The processing is organized into eight stages:
 
 ## Research objectives
 
-This subproject was prepared to support final-project documentation with the following objectives:
+This repository was prepared to support final-project documentation with the following objectives:
 
-1. document a reproducible seismic ground-roll attenuation workflow for a 2D land vibroseis dataset,
-2. prepare a clean and auditable sequence from raw SEG-Y input to processed `FFID 231` output,
-3. provide stage-by-stage QC figures that can be used in methodology and results chapters,
-4. package the processing flow in a form suitable for publication and version control.
+1. document a reproducible ground-roll attenuation workflow for a 2D land vibroseis dataset,
+2. prepare a traceable sequence from raw SEG-Y data to processed `FFID 231` output,
+3. provide QC figures that can be used in methodology and results chapters,
+4. package the workflow in a form suitable for publication and version control.
 
 ## Data and acquisition
 
-The input data used in this study correspond to **2D Vibroseis Seismic Data Line 001 - Poland**, stored in SEG-Y format. In this subproject, the processing focus is limited to a single field file identifier, namely `FFID 231`, in order to document the workflow in a controlled and traceable manner.
+The input data used in this study correspond to **2D Vibroseis Seismic Data Line 001 - Poland**, stored in SEG-Y format. In this repository, the processing focus is limited to a single field file identifier, namely `FFID 231`, in order to document the workflow in a controlled and traceable manner.
 
 Dataset reference:
 
@@ -81,47 +84,81 @@ The extracted working gather contains:
 
 ## Methodology
 
-The methodological framework in this subproject follows an AGORA-aligned prestack workflow for land seismic ground-roll attenuation. The sequence begins with seismic data preparation from SEG-Y format, followed by gather selection, geometry recovery, trace conditioning, first-break protection, frequency conditioning, FK-based characterization, and ground-roll modeling.
+The methodological framework in this repository follows an AGORA-aligned prestack workflow for land seismic ground-roll attenuation. The sequence begins with seismic data preparation from SEG-Y format, followed by gather selection, geometry recovery, trace conditioning, first-break protection, frequency conditioning, FK-based characterization, and ground-roll modeling.
 
 From an implementation perspective, the workflow can be grouped into four methodological blocks:
 
-1. data preparation:
-   conversion of the SEG-Y line into numerical arrays and extraction of `FFID 231`;
-2. geometric conditioning:
-   reconstruction of source-receiver geometry and signed offsets from `SPS`, `RPS`, and `XPS`;
-3. signal conditioning:
-   despiking, trace balancing, early-arrival protection, band-limiting, and resampling;
-4. coherent-noise attenuation:
-   AGORA-aligned characterization and FK-domain modeling to estimate and remove ground-roll energy.
+1. data preparation: conversion of the SEG-Y line into numerical arrays and extraction of `FFID 231`;
+2. geometric conditioning: reconstruction of source-receiver geometry and signed offsets from `SPS`, `RPS`, and `XPS`;
+3. signal conditioning: despiking, trace balancing, early-arrival protection, band-limiting, and resampling;
+4. coherent-noise attenuation: AGORA-aligned characterization and FK-domain modeling to estimate and remove ground-roll energy.
 
-The final stage produces both processed gathers and documentation-quality QC products, including stage-specific images, FK-domain displays, summary metrics, and array outputs.
+The final stage produces processed gathers and documentation-quality QC products, including stage-specific images, FK-domain displays, summary metrics, and array outputs.
+
+## Preview
+
+Example outputs from the final documentation stage are shown below.
+
+### Final gather panels
+
+![Final AGORA panels](./results/agora_final_ffid_231/stage_08_agora_final_panels.png)
+
+### SU-style input gather and corresponding FK spectrum
+
+![Input SU-style XT-FK](./results/agora_final_ffid_231/stage_08_input_su_style_xt_fk.png)
+
+### SU-style clean gather and corresponding FK spectrum
+
+![Clean SU-style XT-FK](./results/agora_final_ffid_231/stage_08_clean_su_style_xt_fk.png)
+
+## Data preparation
+
+Before running the AGORA workflow, prepare the local NumPy assets from the raw SEG-Y:
+
+```bash
+python agora_final_ffid231/prepare_data_ffid231.py
+```
+
+This script will:
+
+- read `../2D_Land_vibro_data_2ms/Line_001.sgy`
+- convert the full line to `Line_001.npy`
+- export `Line_001_twt.npy`
+- export per-trace `ffid` and `tracf`
+- extract `FFID 231` only
+- save both raw and receiver-only `FFID 231` arrays
+
+Prepared outputs are written under:
+
+- [data/prepared](./data/prepared)
 
 ## Repository layout
 
 ```text
 agora_final_ffid231/
-├── .gitignore
-├── FLOWCHART.md
-├── README.md
-├── config/
-│   └── agora_final_ffid231_config.json
-├── data/
-│   └── prepared/
-│       ├── Line_001.npy
-│       ├── Line_001_twt.npy
-│       ├── Line_001_ffid.npy
-│       ├── Line_001_tracf.npy
-│       ├── ffid_231_raw.npy
-│       ├── ffid_231_receiver_only.npy
-│       └── *.json
-├── prepare_data_ffid231.py
-├── run_agora_final_ffid231.py
-└── results/
-    └── agora_final_ffid_231/
-        ├── stage_1_*.png
-        ├── stage_2_*.png
-        ├── ...
-        └── stage_08_*.png/.npy/.json
+|- .gitignore
+|- FLOWCHART.md
+|- LICENSE
+|- README.md
+|- RELEASE_NOTES_v1.md
+|- requirements.txt
+|- config/
+|  `- agora_final_ffid231_config.json
+|- data/
+|  `- prepared/
+|     |- ffid_231_raw.npy
+|     |- ffid_231_receiver_only.npy
+|     |- ffid_231_twt.npy
+|     |- ffid_231_tracf.npy
+|     `- *.json
+|- prepare_data_ffid231.py
+|- run_agora_final_ffid231.py
+`- results/
+   `- agora_final_ffid_231/
+      |- stage_1_*.png
+      |- stage_2_*.png
+      |- ...
+      `- stage_08_*.png/.npy/.json
 ```
 
 ## Processing flow
@@ -141,27 +178,6 @@ graph TD;
     I --> J[Stage 7: AGORA-aligned FK Modeling];
     J --> K[Stage 8: QC, FK Displays, Output Documentation];
 ```
-
-## Data preparation
-
-Before running the AGORA workflow, prepare the local `.npy` assets from the raw SEG-Y:
-
-```bash
-python agora_final_ffid231/prepare_data_ffid231.py
-```
-
-This script will:
-
-- read `../2D_Land_vibro_data_2ms/Line_001.sgy`
-- convert the full line to `Line_001.npy`
-- export `Line_001_twt.npy`
-- export per-trace `ffid` and `tracf`
-- extract `FFID 231` only
-- save both raw and receiver-only `FFID 231` arrays
-
-Prepared outputs are written under:
-
-- [data/prepared](./data/prepared)
 
 ## Stage-by-stage summary
 
@@ -246,6 +262,27 @@ This workflow should be interpreted with the following limitations in mind:
 3. the FK-domain attenuation is sensitive to geometry assumptions, especially receiver spacing and apparent-velocity limits;
 4. the output quality depends on the suitability of selected parameters such as `FMIN`, `FMAX`, `VGMIN`, `VGMAX`, and the first-break protection settings;
 5. while the workflow is reproducible and documented, parameter transfer to other lines or surveys may require recalibration.
+
+## Citation
+
+If you use this repository as part of academic work, please cite it in a form similar to:
+
+```text
+claramtd, 2026, AGORA Final FFID 231:
+AGORA-aligned 2D shot-domain seismic processing workflow for
+2D Vibroseis Seismic Data Line 001 - Poland, GitHub repository.
+https://github.com/claramtd/agora-final-ffid231
+```
+
+You may also cite the dataset separately using the SEG Wiki entry listed in the References section.
+
+## Acknowledgement
+
+This repository acknowledges:
+
+- the SEG Wiki entry for the dataset description and contextual reference,
+- the open Madagascar-based seismic processing example repository used as a structural inspiration for documentation layout,
+- the AGORA user-guide discussion used to frame the processing stages and parameterization logic.
 
 ## Inputs
 
