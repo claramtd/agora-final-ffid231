@@ -1,4 +1,4 @@
-# AGORA Final FFID 231 Flowchart
+# Implementation of the AGORA Approach on 2D Vibroseis Seismic Data Line 001 - Poland
 
 This flowchart documents the processing sequence applied to `FFID 231` from **2D Vibroseis Seismic Data Line 001 - Poland**.
 
