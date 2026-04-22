@@ -105,11 +105,11 @@ Example outputs from the final documentation stage are shown below.
 
 ### SU-style input gather and corresponding FK spectrum
 
-![Input SU-style XT-FK](./results/agora_final_ffid_231/stage_08_input_su_style_xt_fk.png)
+![Input SU-style XT-FK Linear](./results/agora_final_ffid_231/stage_08_input_su_style_xt_fk_linear.png)
 
 ### SU-style clean gather and corresponding FK spectrum
 
-![Clean SU-style XT-FK](./results/agora_final_ffid_231/stage_08_clean_su_style_xt_fk.png)
+![Clean SU-style XT-FK Linear](./results/agora_final_ffid_231/stage_08_clean_su_style_xt_fk_linear.png)
 
 ## Data preparation
 
@@ -313,7 +313,7 @@ Key deliverables include:
 - `stage_6_agora_characterization.png`
 - `stage_7_modeling_removed_clean.png`
 - `stage_08_agora_final_summary.json`
-- `stage_08_*_su_style_xt_fk.png`
+- `stage_08_*_su_style_xt_fk_linear.png`
 
 ## How to run
 
