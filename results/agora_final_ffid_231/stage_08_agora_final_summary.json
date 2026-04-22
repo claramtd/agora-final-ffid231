@@ -1,0 +1,110 @@
+{
+  "ffid": 231,
+  "workflow_type": "AGORA-aligned 8-stage 2D shot-domain pipeline",
+  "stage_1": {
+    "mode": "AGORA 2D blank",
+    "one": "SP_NB",
+    "raw_trace_count": 284,
+    "receiver_trace_count": 282,
+    "removed_nonreceiver_traces": 2
+  },
+  "stage_2": {
+    "receiver_count": 282,
+    "receiver_spacing_median_m": 25.031132756033912,
+    "receiver_spacing_mean_m": 25.029800951101375,
+    "receiver_spacing_std_m": 0.04695743812856357,
+    "offset_min_m": -3517.779541015625,
+    "offset_max_m": 3515.594482421875,
+    "dx_matches_expectation": true
+  },
+  "stage_3": {
+    "agc_for_process": false,
+    "agc_for_qc_only": true,
+    "despike_enabled": true,
+    "despike_clip_percentile": 99.9,
+    "demean_per_trace": true,
+    "amplitude_preserve": true
+  },
+  "stage_4": {
+    "method": "velocity_protection_taper",
+    "wmutex_velocity_mps": 5200.0,
+    "wtapex_ms": 200.0,
+    "optional_mute": {
+      "enabled": false,
+      "t0_s": 0.1,
+      "v0_km_s": 5.2
+    }
+  },
+  "stage_5": {
+    "enabled": true,
+    "bandpass_flo_hz": 3.0,
+    "bandpass_fhi_hz": 125.0,
+    "filter_order": 6,
+    "input_dt_ms": 2.0,
+    "output_dt_ms": 4.0
+  },
+  "stage_6": {
+    "fmin_hz": 3.0,
+    "fmax_hz": 25.0,
+    "vgmin_mps": 100.0,
+    "vgmax_mps": 1800.0,
+    "vpmin_mps": 400.0,
+    "vpmax_mps": 2800.0,
+    "lvi": 1,
+    "niter": 1,
+    "nt": 30,
+    "numcurv": 1,
+    "nummod": 1,
+    "amcut": 2.0,
+    "shall_ms": 250.0
+  },
+  "stage_7": {
+    "modeling_method": "agora_aligned_fk_velocity_mask",
+    "manual_velocity_mode": false,
+    "flexvel": 0.75,
+    "tolbf": 1.0,
+    "tapf_fraction_of_fmax": 0.1,
+    "tapv_fraction_of_vgmax": 0.1,
+    "tapt": 0.1,
+    "nvelneg": false,
+    "fcut_hz": null,
+    "fk_taper_fraction": 0.2,
+    "preserve_below_fmin": true,
+    "backscatter_cleanup_enabled": true
+  },
+  "stage_8": {
+    "qc_agc_window_sec": 0.2,
+    "save_input_clean_removed_panels": true,
+    "save_fk_plots": true,
+    "save_fk_mask_plot": true,
+    "save_stage_summary_json": true,
+    "save_auxiliary_tf_reference": true,
+    "auxiliary_tf_reference": {
+      "nperseg": 128,
+      "noverlap": 96,
+      "pclip": 25.0,
+      "freq_limit_hz": 18.0
+    }
+  },
+  "output_metrics": {
+    "input_rms": 0.046786271035671234,
+    "removed_rms": 0.01243489421904087,
+    "clean_rms": 0.04437663406133652,
+    "removed_energy_ratio": 0.2657806873321533,
+    "shared_fk_log_scale": {
+      "vmin": -6.0,
+      "vmax": 3.6746468544006348
+    },
+    "shared_fk_linear_scale": {
+      "vmin": 3.6618212106986903e-07,
+      "vmax": 68.7580337524414
+    }
+  },
+  "auxiliary_tf_reference": {
+    "signal_correlation": 0.93993600941136,
+    "noise_correlation": 0.5637020880136671,
+    "signal_rmse": 0.015164488926529884,
+    "noise_rmse": 0.015164488926529884,
+    "auxiliary_removed_energy_ratio": 0.38827967643737793
+  }
+}

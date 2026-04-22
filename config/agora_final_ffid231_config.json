@@ -1,0 +1,100 @@
+{
+  "project": {
+    "name": "AGORA Final FFID 231",
+    "description": "AGORA-aligned 2D shot-domain workflow for Line_001 FFID 231, packaged as a standalone subproject.",
+    "config_version": 1
+  },
+  "input": {
+    "ffid": 231,
+    "segy_path": "../2D_Land_vibro_data_2ms/Line_001.sgy",
+    "twt_path": "../NUMPY/Line_001_twt.npy",
+    "sps_path": "../2D_Land_vibro_data_2ms/Line_001.SPS",
+    "rps_path": "../2D_Land_vibro_data_2ms/Line_001.RPS",
+    "xps_path": "../2D_Land_vibro_data_2ms/Line_001.XPS",
+    "output_dir": "./results/agora_final_ffid_231"
+  },
+  "stage_1_input_gather_grouping": {
+    "mode": "AGORA 2D blank",
+    "one": "SP_NB",
+    "expected_receiver_traces": 282,
+    "drop_nonreceiver_traces": true,
+    "save_receiver_only": true
+  },
+  "stage_2_geometry_header_qc": {
+    "print_qc": true,
+    "offset_min_est_m": -3518.0,
+    "offset_max_est_m": 3516.0,
+    "expected_dx_m": 25.03,
+    "dx_tolerance_m": 0.5,
+    "allow_near_regular_geometry": true
+  },
+  "stage_3_preclean": {
+    "agc_for_process": false,
+    "agc_for_qc_only": true,
+    "despike_enabled": true,
+    "despike_clip_percentile": 99.9,
+    "demean_per_trace": true,
+    "amplitude_preserve": true
+  },
+  "stage_4_first_break_protection": {
+    "method": "velocity_protection_taper",
+    "wmutex_velocity_mps": 5200.0,
+    "wtapex_ms": 200.0,
+    "optional_mute": {
+      "enabled": false,
+      "t0_s": 0.1,
+      "v0_km_s": 5.2
+    }
+  },
+  "stage_5_bandlimit_resample": {
+    "enabled": true,
+    "bandpass_flo_hz": 3.0,
+    "bandpass_fhi_hz": 125.0,
+    "filter_order": 6,
+    "input_dt_ms": 2.0,
+    "output_dt_ms": 4.0
+  },
+  "stage_6_agora_characterization": {
+    "fmin_hz": 3.0,
+    "fmax_hz": 25.0,
+    "vgmin_mps": 100.0,
+    "vgmax_mps": 1800.0,
+    "vpmin_mps": 400.0,
+    "vpmax_mps": 2800.0,
+    "lvi": 1,
+    "niter": 1,
+    "nt": 30,
+    "numcurv": 1,
+    "nummod": 1,
+    "amcut": 2.0,
+    "shall_ms": 250.0
+  },
+  "stage_7_fx_modeling_backscatter_cleanup": {
+    "modeling_method": "agora_aligned_fk_velocity_mask",
+    "manual_velocity_mode": false,
+    "flexvel": 0.75,
+    "tolbf": 1.0,
+    "tapf_fraction_of_fmax": 0.1,
+    "tapv_fraction_of_vgmax": 0.1,
+    "tapt": 0.1,
+    "nvelneg": false,
+    "fcut_hz": null,
+    "fk_taper_fraction": 0.2,
+    "preserve_below_fmin": true,
+    "backscatter_cleanup_enabled": true
+  },
+  "stage_8_qc_and_tuning": {
+    "qc_agc_window_sec": 0.2,
+    "save_input_clean_removed_panels": true,
+    "save_fk_plots": true,
+    "save_fk_mask_plot": true,
+    "save_stage_summary_json": true,
+    "save_auxiliary_tf_reference": true,
+    "auxiliary_tf_reference": {
+      "nperseg": 128,
+      "noverlap": 96,
+      "pclip": 25.0,
+      "freq_limit_hz": 18.0
+    }
+  }
+}

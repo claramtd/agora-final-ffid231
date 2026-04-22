@@ -1,0 +1,19 @@
+{
+  "target_ffid": 231,
+  "shot_index": 0,
+  "traces_per_shot": 284,
+  "raw_shape": [
+    284,
+    1501
+  ],
+  "receiver_only_shape": [
+    282,
+    1501
+  ],
+  "nonreceiver_trace_count": 2,
+  "receiver_trace_count": 282,
+  "removed_tracf_values": [
+    -1,
+    -1
+  ]
+}

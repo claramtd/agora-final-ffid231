@@ -1,0 +1,14 @@
+{
+  "dataset_name": "Line_001",
+  "segy_path": "D:\\Clara\\open_data_seg\\open-geoscience-repository\\2D_Land_vibro_data_2ms\\Line_001.sgy",
+  "ntraces": 71284,
+  "samples_per_trace": 1501,
+  "dt_ms": 2.0,
+  "sample_format_code": 1,
+  "npy_outputs": {
+    "data": "D:\\Clara\\open_data_seg\\open-geoscience-repository\\agora_final_ffid231\\data\\prepared\\Line_001.npy",
+    "twt": "D:\\Clara\\open_data_seg\\open-geoscience-repository\\agora_final_ffid231\\data\\prepared\\Line_001_twt.npy",
+    "ffid": "D:\\Clara\\open_data_seg\\open-geoscience-repository\\agora_final_ffid231\\data\\prepared\\Line_001_ffid.npy",
+    "tracf": "D:\\Clara\\open_data_seg\\open-geoscience-repository\\agora_final_ffid231\\data\\prepared\\Line_001_tracf.npy"
+  }
+}

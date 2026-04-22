@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+data/prepared/Line_001.npy
+data/prepared/Line_001_ffid.npy
+data/prepared/Line_001_tracf.npy
+data/prepared/Line_001_twt.npy
