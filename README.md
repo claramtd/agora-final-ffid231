@@ -305,7 +305,7 @@ If you use this repository as part of academic work, please cite it in a form si
 claramtd, 2026, AGORA Final FFID 231:
 AGORA-aligned 2D shot-domain seismic processing workflow for
 2D Vibroseis Seismic Data Line 001 - Poland, GitHub repository.
-https://github.com/claramtd/agora-final-ffid231
+https://github.com/claramtd/agora-line001-poland
 ```
 
 You may also cite the dataset separately using the SEG Wiki entry listed in the References section.
