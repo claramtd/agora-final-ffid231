@@ -1,11 +1,11 @@
-# AGORA Final FFID 231
+# Implementation of the AGORA Approach on 2D Vibroseis Seismic Data Line 001 - Poland
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](./LICENSE)
 ![Python](https://img.shields.io/badge/Python-3.x-blue.svg)
 ![Workflow](https://img.shields.io/badge/Workflow-8%20Stages-orange.svg)
 ![Dataset](https://img.shields.io/badge/Dataset-Line%20001%20Poland-informational.svg)
 
-AGORA-aligned 2D shot-domain seismic processing workflow for `FFID 231` from the dataset **2D Vibroseis Seismic Data Line 001 - Poland**. This repository packages the full workflow, from SEG-Y preparation to stage-by-stage QC outputs, in a form suitable for academic documentation and demonstration. The dataset designation follows the SEG Wiki entry for *2D Vibroseis Line 001*.
+This repository documents the implementation of an AGORA-aligned 2D shot-domain seismic processing workflow for `FFID 231` from the dataset **2D Vibroseis Seismic Data Line 001 - Poland**. It packages the full workflow, from SEG-Y preparation to stage-by-stage QC outputs, in a form suitable for academic documentation and demonstration. The dataset designation follows the SEG Wiki entry for *2D Vibroseis Line 001*.
 
 - Reference repository structure: https://github.com/arohatgi29/Seismic-Processing-using-Madagascar
 
