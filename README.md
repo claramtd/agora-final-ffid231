@@ -1,5 +1,10 @@
 # AGORA Final FFID 231
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](./LICENSE)
+![Python](https://img.shields.io/badge/Python-3.x-blue.svg)
+![Workflow](https://img.shields.io/badge/Workflow-8%20Stages-orange.svg)
+![Dataset](https://img.shields.io/badge/Dataset-Line%20001%20Poland-informational.svg)
+
 AGORA-aligned 2D shot-domain seismic processing workflow for `FFID 231` from the dataset **2D Vibroseis Seismic Data Line 001 - Poland**. This repository packages the full workflow, from SEG-Y preparation to stage-by-stage QC outputs, in a form suitable for academic documentation and demonstration. The dataset designation follows the SEG Wiki entry for *2D Vibroseis Line 001*.
 
 - Reference repository structure: https://github.com/arohatgi29/Seismic-Processing-using-Madagascar
@@ -10,6 +15,7 @@ AGORA-aligned 2D shot-domain seismic processing workflow for `FFID 231` from the
 - Research objectives
 - Data and acquisition
 - Methodology
+- Quick start
 - Preview
 - Data preparation
 - Repository layout
@@ -94,6 +100,23 @@ From an implementation perspective, the workflow can be grouped into four method
 4. coherent-noise attenuation: AGORA-aligned characterization and FK-domain modeling to estimate and remove ground-roll energy.
 
 The final stage produces processed gathers and documentation-quality QC products, including stage-specific images, FK-domain displays, summary metrics, and array outputs.
+
+## Quick start
+
+Prepare the data and run the full workflow:
+
+```bash
+python agora_final_ffid231/prepare_data_ffid231.py
+python agora_final_ffid231/run_agora_final_ffid231.py
+```
+
+Main output folder:
+
+- [results/agora_final_ffid_231](./results/agora_final_ffid_231)
+
+Main summary file:
+
+- [stage_08_agora_final_summary.json](./results/agora_final_ffid_231/stage_08_agora_final_summary.json)
 
 ## Preview
 
@@ -245,6 +268,17 @@ The main summary file is:
 
 - [stage_08_agora_final_summary.json](./results/agora_final_ffid_231/stage_08_agora_final_summary.json)
 
+### Key artifacts
+
+| Artifact | Description |
+|---|---|
+| `data/prepared/ffid_231_raw.npy` | Raw shot gather for FFID 231 |
+| `data/prepared/ffid_231_receiver_only.npy` | Receiver-only gather used as working input |
+| `results/agora_final_ffid_231/stage_08_agora_final_panels.png` | Final input/removed/clean overview |
+| `results/agora_final_ffid_231/stage_08_input_su_style_xt_fk_linear.png` | Input gather with linear FK spectrum |
+| `results/agora_final_ffid_231/stage_08_clean_su_style_xt_fk_linear.png` | Clean gather with linear FK spectrum |
+| `results/agora_final_ffid_231/stage_08_agora_final_summary.json` | Final metrics and processing summary |
+
 This file records:
 
 - trace counts and geometry checks,
@@ -320,6 +354,7 @@ Key deliverables include:
 From the repository root:
 
 ```bash
+pip install -r agora_final_ffid231/requirements.txt
 python agora_final_ffid231/prepare_data_ffid231.py
 python agora_final_ffid231/run_agora_final_ffid231.py
 ```
@@ -328,6 +363,7 @@ Or from inside the subproject:
 
 ```bash
 cd agora_final_ffid231
+pip install -r requirements.txt
 python prepare_data_ffid231.py
 python run_agora_final_ffid231.py
 ```
